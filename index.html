@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDNIS-OS | The Custom Creator Distribution</title>
+    <style>
+        :root {
+            --bg-base: #080b10;
+            --bg-surface: #121824;
+            --bg-card: rgba(22, 30, 49, 0.7);
+            --accent-primary: #58a6ff;
+            --accent-success: #2ea043;
+            --text-main: #e6edf3;
+            --text-muted: #8b949e;
+            --border-glow: rgba(88, 166, 255, 0.15);
+            --border-standard: #30363d;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-base);
+            background-image: radial-gradient(circle at 50% 0%, rgba(88, 166, 255, 0.08) 0%, transparent 60%);
+            margin: 0; padding: 0;
+        }
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 40px; background: rgba(8, 11, 16, 0.8); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-standard); position: sticky; top: 0; z-index: 100;
+        }
+        .nav-brand { font-size: 1.4rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
+        .nav-brand span { color: var(--accent-primary); }
+        .hero-section { max-width: 1100px; margin: 60px auto 40px auto; text-align: center; padding: 0 20px; }
+        h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -1.5px; margin: 0 0 20px 0; background: linear-gradient(180deg, #ffffff 0%, #c9d1d9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px auto; }
+        .cta-group { display: flex; justify-content: center; gap: 16px; margin-bottom: 60px; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.2s ease; }
+        .btn-primary { background-color: var(--accent-success); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .btn-primary:hover { background-color: #2ea043; box-shadow: 0 0 20px rgba(46, 160, 67, 0.2); }
+        .btn-secondary { background-color: #21262d; color: var(--text-main); border: 1px solid var(--border-standard); }
+        .btn-secondary:hover { background-color: #30363d; }
+        .video-container { max-width: 900px; margin: 0 auto 80px auto; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-standard); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--border-glow); background: #010409; }
+        video { width: 100%; display: block; }
+        .grid-layout { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto 60px auto; padding: 0 20px; }
+        .card { background: var(--bg-card); backdrop-filter: blur(8px); border: 1px solid var(--border-standard); border-radius: 10px; padding: 30px; }
+        .card h3 { margin-top: 0; color: var(--accent-primary); }
+        .spec-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .spec-table td { padding: 10px 0; border-bottom: 1px solid rgba(48, 54, 61, 0.5); }
+        .spec-table td:first-child { color: var(--text-muted); }
+        .spec-table td:last-child { font-family: monospace; color: #ff7b72; text-align: right; }
+        .pre-container { background-color: #010409; padding: 16px; border-radius: 8px; border: 1px solid var(--border-standard); margin-top: 15px; }
+        code { font-family: monospace; color: #79c0ff; }
+        footer { text-align: center; padding: 40px 20px; color: var(--text-muted); border-top: 1px solid var(--border-standard); font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🐧 IDNIS-<span>OS</span></div>
+        <div><a href="https://github.com" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">GitHub Repo</a></div>
+    </nav>
+    <div class="hero-section">
+        <h1>The Creator Linux Distribution</h1>
+        <p class="hero-subtitle">An independent standalone x86_64 operating system engineered directly atop a Debian Bookworm core layout, featuring universal hardware support configurations and a custom interface layer.</p>
+        <div class="cta-group">
+            <a href="https://github.com/releases" class="btn btn-primary">Download Master ISO</a>
+        </div>
+        <div class="video-container">
+            <video controls autoplay loop muted playsinline>
+                <source src="https://github.com/user-attachments/assets/747bb5de-d6ac-470f-b4bc-7add10538680" type="video/webm">
+            </video>
+        </div>
+    </div>
+    <div class="grid-layout">
+        <div class="card">
+            <h3>Architecture Specifications</h3>
+            <table class="spec-table">
+                <tr><td>Target Baseline</td><td>amd64 (x86_64)</td></tr>
+                <tr><td>Core Init</td><td>systemd Engine</td></tr>
+                <tr><td>Display Pipeline</td><td>Xorg Server + gdm3</td></tr>
+                <tr><td>Desktop Environment</td><td>GNOME Shell Layout</td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <h3>Authentication Access</h3>
+            <table class="spec-table">
+                <tr><td>Standard User</td><td>idnis</td></tr>
+                <tr><td>Standard Password</td><td>password</td></tr>
+                <tr><td>Root Administrator</td><td>root</td></tr>
+                <tr><td>Root Password</td><td>root</td></tr>
+            </table>
+        </div>
+        <div class="card" style="grid-column: span 2;">
+            <h3>Local Emulation Simulation Command</h3>
+            <div class="pre-container">
+                <pre><code>qemu-system-x86_64 -boot d -cdrom idnis-os.iso -m 2048 -enable-kvm</code></pre>
+            </div>
+        </div>
+    </div>
+    <footer><p>&copy; 2026 IDNIS-OS Project Framework.</p></footer>
+</body>
+</html>
