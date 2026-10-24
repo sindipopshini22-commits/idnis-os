@@ -32,6 +32,7 @@
             line-height: 1.6;
         }
 
+        /* Ambient Fluid Background Elements */
         .ambient-glow-top {
             position: absolute;
             top: -10%;
@@ -93,29 +94,24 @@
 
         .hero {
             max-width: 1000px;
-            margin: 40px auto;
+            margin: 40px auto 40px auto;
             text-align: center;
             padding: 0 20px;
         }
 
+        /* Circular Logo Frame Container */
         .logo-container {
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             display: inline-block;
-            position: relative;
         }
 
-        .logo-container img {
+        .logo-img {
             width: 120px;
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--primary-glow);
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
-            transition: transform 0.3s ease;
-        }
-
-        .logo-container img:hover {
-            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
         }
 
         .tagline {
@@ -148,6 +144,7 @@
             font-weight: 300;
         }
 
+        /* Action Buttons */
         .cta-container {
             display: inline-flex;
             background: rgba(255, 255, 255, 0.03);
@@ -168,6 +165,7 @@
             font-size: 0.95rem;
             transition: all 0.3s ease;
             border: none;
+            cursor: pointer;
             box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
         }
 
@@ -194,6 +192,7 @@
             color: var(--primary-glow);
         }
 
+        /* Video Showcase Element Layout */
         .video-wrapper {
             max-width: 900px;
             margin: 0 auto 80px auto;
@@ -201,6 +200,7 @@
         }
 
         .video-frame {
+            position: relative;
             background: rgba(10, 5, 20, 0.6);
             border: 1px solid var(--border-color);
             border-radius: 24px;
@@ -216,20 +216,10 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, #ffffff, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
+        /* Technical Specification Matrices */
         .grid-container {
             max-width: 1100px;
-            margin: 0 auto 40px auto;
+            margin: 0 auto 80px auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
@@ -240,7 +230,9 @@
             .grid-container {
                 grid-template-columns: 1fr;
             }
-            h1 { font-size: 2.5rem; }
+            h1 {
+                font-size: 2.5rem;
+            }
         }
 
         .card {
@@ -249,6 +241,7 @@
             border-radius: 20px;
             padding: 35px;
             backdrop-filter: blur(12px);
+            position: relative;
             transition: border-color 0.3s ease;
         }
 
@@ -256,13 +249,9 @@
             border-color: rgba(168, 85, 247, 0.4);
         }
 
-        .card-full {
-            grid-column: 1 / -1;
-        }
-
         .card-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             letter-spacing: 1px;
             margin-bottom: 25px;
             color: #ffffff;
@@ -297,6 +286,7 @@
 
         .tech-label {
             color: var(--text-muted);
+            font-weight: 400;
         }
 
         .tech-value {
@@ -310,42 +300,35 @@
             font-weight: 600;
         }
 
-        .driver-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .driver-tag {
-            background: rgba(168, 85, 247, 0.1);
-            border: 1px solid rgba(168, 85, 247, 0.2);
-            color: #d8b4fe;
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-family: monospace;
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.2);
             font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
         }
+    </style>
+</head>
+<body>
 
-        .pipeline-list {
-            list-style: none;
-        }
+    <div class="ambient-glow-top"></div>
+    <div class="ambient-glow-bottom"></div>
 
-        .pipeline-step {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
+    <header>
+        <div class="logo">IDNIS-OS</div>
+        <a href="https://github.com/sindipopshini22-commits/idnis-os" class="gh-btn" target="_blank">GitHub Repo</a>
+    </header>
 
-        .pipeline-step:last-child {
-            margin-bottom: 0;
-        }
+    <section class="hero">
+        <!-- Render custom calico logo graphic element asset cleanly -->
+        <div class="logo-container">
+            <img src="pici_cat.jpg" alt="IDNIS-OS Pici Logo" class="logo-img">
+        </div>
 
-        .step-num {
-            background: linear-gradient(135deg, #a855f7, #6366f1);
-            color: white;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: bold;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
+        <div class="tagline">We Are Opticore Architecture</div>
+        <h1>The Creator Linux Distribution</h1>
+        <p class="description">
+            An independent standalone amd64 operating system engineered directly stack-up from a Debian Bookworm base. Featuring native hardware virtualization and structural micro-layers.
+        </p>
+
+        <div class="cta-container">
