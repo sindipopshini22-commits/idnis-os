@@ -32,7 +32,6 @@
             line-height: 1.6;
         }
 
-        /* Ambient Fluid Background Art */
         .ambient-glow-top {
             position: absolute;
             top: -10%;
@@ -94,9 +93,29 @@
 
         .hero {
             max-width: 1000px;
-            margin: 60px auto 40px auto;
+            margin: 40px auto;
             text-align: center;
             padding: 0 20px;
+        }
+
+        .logo-container {
+            margin-bottom: 28px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .logo-container img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-glow);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.05);
         }
 
         .tagline {
@@ -129,7 +148,6 @@
             font-weight: 300;
         }
 
-        /* Pill Capsule Styled Action Buttons */
         .cta-container {
             display: inline-flex;
             background: rgba(255, 255, 255, 0.03);
@@ -150,7 +168,6 @@
             font-size: 0.95rem;
             transition: all 0.3s ease;
             border: none;
-            cursor: pointer;
             box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
         }
 
@@ -177,7 +194,6 @@
             color: var(--primary-glow);
         }
 
-        /* Video Showcase Layer */
         .video-wrapper {
             max-width: 900px;
             margin: 0 auto 80px auto;
@@ -185,7 +201,6 @@
         }
 
         .video-frame {
-            position: relative;
             background: rgba(10, 5, 20, 0.6);
             border: 1px solid var(--border-color);
             border-radius: 24px;
@@ -201,10 +216,20 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Tech Matrices Grid */
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #ffffff, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         .grid-container {
             max-width: 1100px;
-            margin: 0 auto 80px auto;
+            margin: 0 auto 40px auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
@@ -215,9 +240,7 @@
             .grid-container {
                 grid-template-columns: 1fr;
             }
-            h1 {
-                font-size: 2.5rem;
-            }
+            h1 { font-size: 2.5rem; }
         }
 
         .card {
@@ -226,7 +249,6 @@
             border-radius: 20px;
             padding: 35px;
             backdrop-filter: blur(12px);
-            position: relative;
             transition: border-color 0.3s ease;
         }
 
@@ -234,9 +256,13 @@
             border-color: rgba(168, 85, 247, 0.4);
         }
 
+        .card-full {
+            grid-column: 1 / -1;
+        }
+
         .card-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             letter-spacing: 1px;
             margin-bottom: 25px;
             color: #ffffff;
@@ -271,7 +297,6 @@
 
         .tech-label {
             color: var(--text-muted);
-            font-weight: 400;
         }
 
         .tech-value {
@@ -285,43 +310,42 @@
             font-weight: 600;
         }
 
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        .driver-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-    </style>
-</head>
-<body>
 
-    <div class="ambient-glow-top"></div>
-    <div class="ambient-glow-bottom"></div>
+        .driver-tag {
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            color: #d8b4fe;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
 
-    <header>
-        <div class="logo">IDNIS-OS</div>
-        <!-- Fully lowercase verified path to prevent 404 links -->
-        <a href="https://github.com" class="gh-btn" target="_blank">GitHub Repo</a>
-    </header>
+        .pipeline-list {
+            list-style: none;
+        }
 
-    <section class="hero">
-        <div class="tagline">We Are Opticore Architecture</div>
-        <h1>The Creator Linux Distribution</h1>
-        <p class="description">
-            An independent standalone amd64 operating system engineered directly stack-up from a Debian Bookworm base. Featuring native hardware virtualization and structural micro-layers.
-        </p>
+        .pipeline-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
 
-        <div class="cta-container">
-            <!-- Lowercase verified release endpoint target link -->
-            <a href="https://github.com/releases" class="btn-main" target="_blank">Download Master ISO</a>
-            <a href="#demo-video" class="btn-secondary">
-                <span>Watch System Demo</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </a>
-        </div>
-    </section>
+        .pipeline-step:last-child {
+            margin-bottom: 0;
+        }
 
-    <!-- Native functional video pipeline showcase layer -->
-    <div class="video-wrapper" id="demo-video">
-        <div class="video-frame">
+        .step-num {
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
