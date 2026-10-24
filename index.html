@@ -3,100 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDNIS-OS | The Custom Creator Distribution</title>
+    <title>IDNIS-OS | The Creator Linux Distribution</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Orbitron:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-base: #080b10;
-            --bg-surface: #121824;
-            --bg-card: rgba(22, 30, 49, 0.7);
-            --accent-primary: #58a6ff;
-            --accent-success: #2ea043;
-            --text-main: #e6edf3;
-            --text-muted: #8b949e;
-            --border-glow: rgba(88, 166, 255, 0.15);
-            --border-standard: #30363d;
+            --bg-color: #05020a;
+            --card-bg: rgba(18, 10, 36, 0.4);
+            --border-color: rgba(147, 51, 234, 0.2);
+            --primary-glow: #a855f7;
+            --secondary-glow: #3b82f6;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
         }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
             color: var(--text-main);
-            background-color: var(--bg-base);
-            background-image: radial-gradient(circle at 50% 0%, rgba(88, 166, 255, 0.08) 0%, transparent 60%);
-            margin: 0; padding: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
-        .navbar {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 40px; background: rgba(8, 11, 16, 0.8); backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-standard); position: sticky; top: 0; z-index: 100;
+
+        /* Ambient Fluid Background Art */
+        .ambient-glow-top {
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(59,130,246,0.1) 40%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
         }
-        .nav-brand { font-size: 1.4rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
-        .nav-brand span { color: var(--accent-primary); }
-        .hero-section { max-width: 1100px; margin: 60px auto 40px auto; text-align: center; padding: 0 20px; }
-        h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -1.5px; margin: 0 0 20px 0; background: linear-gradient(180deg, #ffffff 0%, #c9d1d9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-subtitle { font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px auto; }
-        .cta-group { display: flex; justify-content: center; gap: 16px; margin-bottom: 60px; }
-        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.2s ease; }
-        .btn-primary { background-color: var(--accent-success); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .btn-primary:hover { background-color: #2ea043; box-shadow: 0 0 20px rgba(46, 160, 67, 0.2); }
-        .btn-secondary { background-color: #21262d; color: var(--text-main); border: 1px solid var(--border-standard); }
-        .btn-secondary:hover { background-color: #30363d; }
-        .video-container { max-width: 900px; margin: 0 auto 80px auto; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-standard); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--border-glow); background: #010409; }
-        video { width: 100%; display: block; }
-        .grid-layout { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto 60px auto; padding: 0 20px; }
-        .card { background: var(--bg-card); backdrop-filter: blur(8px); border: 1px solid var(--border-standard); border-radius: 10px; padding: 30px; }
-        .card h3 { margin-top: 0; color: var(--accent-primary); }
-        .spec-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        .spec-table td { padding: 10px 0; border-bottom: 1px solid rgba(48, 54, 61, 0.5); }
-        .spec-table td:first-child { color: var(--text-muted); }
-        .spec-table td:last-child { font-family: monospace; color: #ff7b72; text-align: right; }
-        .pre-container { background-color: #010409; padding: 16px; border-radius: 8px; border: 1px solid var(--border-standard); margin-top: 15px; }
-        code { font-family: monospace; color: #79c0ff; }
-        footer { text-align: center; padding: 40px 20px; color: var(--text-muted); border-top: 1px solid var(--border-standard); font-size: 0.85rem; }
+
+        .ambient-glow-bottom {
+            position: absolute;
+            bottom: -10%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, rgba(168,85,247,0.08) 50%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #ffffff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gh-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .gh-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-glow);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+        }
+
+        .hero {
+            max-width: 1000px;
+            margin: 60px auto 40px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .tagline {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--primary-glow);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 30%, #c084fc 70%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            font-weight: 300;
+        }
+
+        /* Pill Capsule Styled Action Buttons */
+        .cta-container {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 6px;
+            border-radius: 100px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 60px;
+        }
+
+        .btn-main {
+            background: linear-gradient(90deg, #a855f7, #6366f1);
+            color: #ffffff;
+            padding: 14px 32px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(168, 85, 247, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            padding: 14px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            color: var(--primary-glow);
+        }
+
+        /* Video Showcase Layer */
+        .video-wrapper {
+            max-width: 900px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
+        }
+
+        .video-frame {
+            position: relative;
+            background: rgba(10, 5, 20, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(168, 85, 247, 0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Tech Matrices Grid */
+        .grid-container {
+            max-width: 1100px;
+            margin: 0 auto 80px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 35px;
+            backdrop-filter: blur(12px);
+            position: relative;
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            color: #ffffff;
+            border-left: 3px solid var(--primary-glow);
+            padding-left: 12px;
+        }
+
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tech-table th {
+            text-align: left;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tech-table td {
+            padding: 14px 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tech-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tech-label {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .tech-value {
+            font-family: monospace;
+            color: #e5e7eb;
+            text-align: right;
+        }
+
+        .tech-value.highlight {
+            color: #c084fc;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-brand">🐧 IDNIS-<span>OS</span></div>
-        <div><a href="https://github.com" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">GitHub Repo</a></div>
-    </nav>
-    <div class="hero-section">
+
+    <div class="ambient-glow-top"></div>
+    <div class="ambient-glow-bottom"></div>
+
+    <header>
+        <div class="logo">IDNIS-OS</div>
+        <!-- Fully lowercase verified path to prevent 404 links -->
+        <a href="https://github.com" class="gh-btn" target="_blank">GitHub Repo</a>
+    </header>
+
+    <section class="hero">
+        <div class="tagline">We Are Opticore Architecture</div>
         <h1>The Creator Linux Distribution</h1>
-        <p class="hero-subtitle">An independent standalone x86_64 operating system engineered directly atop a Debian Bookworm core layout, featuring universal hardware support configurations and a custom interface layer.</p>
-        <div class="cta-group">
-            <a href="https://github.com/releases" class="btn btn-primary">Download Master ISO</a>
+        <p class="description">
+            An independent standalone amd64 operating system engineered directly stack-up from a Debian Bookworm base. Featuring native hardware virtualization and structural micro-layers.
+        </p>
+
+        <div class="cta-container">
+            <!-- Lowercase verified release endpoint target link -->
+            <a href="https://github.com/releases" class="btn-main" target="_blank">Download Master ISO</a>
+            <a href="#demo-video" class="btn-secondary">
+                <span>Watch System Demo</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </a>
         </div>
-        <div class="video-container">
-            <video controls autoplay loop muted playsinline>
-                <source src="https://github.com/user-attachments/assets/747bb5de-d6ac-470f-b4bc-7add10538680" type="video/webm">
-            </video>
-        </div>
-    </div>
-    <div class="grid-layout">
-        <div class="card">
-            <h3>Architecture Specifications</h3>
-            <table class="spec-table">
-                <tr><td>Target Baseline</td><td>amd64 (x86_64)</td></tr>
-                <tr><td>Core Init</td><td>systemd Engine</td></tr>
-                <tr><td>Display Pipeline</td><td>Xorg Server + gdm3</td></tr>
-                <tr><td>Desktop Environment</td><td>GNOME Shell Layout</td></tr>
-            </table>
-        </div>
-        <div class="card">
-            <h3>Authentication Access</h3>
-            <table class="spec-table">
-                <tr><td>Standard User</td><td>idnis</td></tr>
-                <tr><td>Standard Password</td><td>password</td></tr>
-                <tr><td>Root Administrator</td><td>root</td></tr>
-                <tr><td>Root Password</td><td>root</td></tr>
-            </table>
-        </div>
-        <div class="card" style="grid-column: span 2;">
-            <h3>Local Emulation Simulation Command</h3>
-            <div class="pre-container">
-                <pre><code>qemu-system-x86_64 -boot d -cdrom idnis-os.iso -m 2048 -enable-kvm</code></pre>
-            </div>
-        </div>
-    </div>
-    <footer><p>&copy; 2026 IDNIS-OS Project Framework.</p></footer>
-</body>
-</html>
+    </section>
+
+    <!-- Native functional video pipeline showcase layer -->
+    <div class="video-wrapper" id="demo-video">
+        <div class="video-frame">
